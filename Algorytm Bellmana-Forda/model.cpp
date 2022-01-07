@@ -35,7 +35,7 @@ void Load_graph(const string& name, Graph& _graph)
 		else if (sequence % 5 == 1) {
 			if (temp == "->")
 				directed = true;
-			else
+			else if (temp == "-")
 				directed = false;
 		}
 		else if (sequence % 5 == 2) {
@@ -45,11 +45,10 @@ void Load_graph(const string& name, Graph& _graph)
 		else if (sequence % 5 == 4) {
 			istringstream converted(temp);
 			converted >> cost;
-			if (directed) {
-				addEdge_Directed(_graph, beginning, end, cost);
-			}
-			else
-				cout << "\nnie\n";
+			addEdge_Directed(_graph, beginning, end, cost);
+			if (!directed)
+				addEdge_Directed(_graph, end, beginning, cost);
+				
 
 		}
 		sequence++;

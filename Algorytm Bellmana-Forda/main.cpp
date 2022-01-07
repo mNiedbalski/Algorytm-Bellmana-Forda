@@ -6,9 +6,11 @@ int main(int argc, char* argv[])
 {
 	Graph graph;
 	vector <string> parametry;
+	vector <int> zmienne;
 	parametry.resize(3);
 	Load_parameters(parametry, argc, argv);
 	Load_graph(parametry.at(0), graph);
+	Load_variables(parametry.at(1),zmienne);
 	DisplayGraph(graph); //Debugg
 	
 	/* // Debugg check czy dobrze zamapowano 

@@ -48,11 +48,17 @@ void Load_graph(const string& name, Graph& _graph)
 			addEdge_Directed(_graph, beginning, end, cost);
 			if (!directed)
 				addEdge_Directed(_graph, end, beginning, cost);
-				
-
 		}
 		sequence++;
 	}
+}
+void Load_variables(const string& name, vector <int>& variables)
+{
+	ifstream plik;
+	plik.open(name);
+	int temp;
+	while (plik >> temp)
+		variables.push_back(temp);
 }
 int Find(const Graph& graph, const int & index, bool & _found)
 {
@@ -91,6 +97,10 @@ void addEdge_Directed(Graph& graph, const int begin, const int end, const int co
 		graph.nodes.push_back(newNode);
 
 	}
+}
+void Bellman_Ford(Graph& graph, const int index)
+{
+
 }
 void DisplayGraph(const Graph& graph)
 {

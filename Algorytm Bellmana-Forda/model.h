@@ -68,6 +68,8 @@ struct Graph
 */
 void Load_parameters(vector <string>& params, const int & Liczba_parametrów, char* parametry[]);
 void Load_graph(const string& name, Graph& _graph);
+void Load_variables(const string& name, vector <int>& variables);
 int Find(const Graph& graph, const int& index, bool& _found);
 void addEdge_Directed(Graph& graph, const int begin, const int end, const int cost);
+void Bellman_Ford(Graph& graph, const int index);
 void DisplayGraph(const Graph& graph);

@@ -57,10 +57,6 @@ bool Bellman_Ford(Graph& graph, const int index)
 		paths[i] = temp;
 	}
 
-
-
-
-	bool change = false;
 	for (int i = 0; i < graph.nodes.size(); i++) {
 		for (auto node : graph.nodes) {
 			for (auto edge : node.edges) {

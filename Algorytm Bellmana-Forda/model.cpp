@@ -45,19 +45,31 @@ void addEdge_Directed(Graph& graph, const int begin, const int end, const int co
 bool Bellman_Ford(Graph& graph, const int index)
 {
 	vector <int> distances;
+	vector <string> paths;
 	distances.resize(graph.nodes.size());
+	paths.resize(graph.nodes.size());
 	for (int i = 0; i < graph.nodes.size(); i++)
 		distances[i] = INT_MAX;
 	distances[graph.umap_nodes.at(index)] = 0;
+	string temp = to_string(index);
+	cout << "paths: \n";
+	for (int i = 0; i < graph.nodes.size(); i++) {
+		paths[i] = temp;
+	}
+
+
+
 
 	bool change = false;
 	for (int i = 0; i < graph.nodes.size(); i++) {
 		for (auto node : graph.nodes) {
 			for (auto edge : node.edges) {
 				if (distances[graph.umap_nodes.at(edge.begin)] != INT_MAX && distances[graph.umap_nodes.at(edge.begin)] + edge.cost < distances[graph.umap_nodes.at(edge.end)]) {
-					distances[graph.umap_nodes.at(edge.end)] = distances[graph.umap_nodes.at(edge.begin)] + edge.cost;
 					if (i == graph.nodes.size() - 1)
 						return false;
+					distances[graph.umap_nodes.at(edge.end)] = distances[graph.umap_nodes.at(edge.begin)] + edge.cost;
+					paths[graph.umap_nodes.at(edge.end)] = paths[graph.umap_nodes.at(edge.begin)] + "->" + to_string(edge.end);
+
 				}
 
 			}
@@ -67,6 +79,7 @@ bool Bellman_Ford(Graph& graph, const int index)
 	for (int i = 0; i < distances.size(); i++)
 	{
 		cout << index << " -> " << graph.umap_nodes_reversed.at(i) << " cost: " << distances[i] << endl;
+		cout << paths[i] << endl;
 	}
 	return true;
 }

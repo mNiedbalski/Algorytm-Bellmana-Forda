@@ -16,14 +16,4 @@ int main(int argc, char* argv[])
 	if (!Bellman_Ford(graph, 1))
 		cout << "\nWystapil ujemny cykl";
 
-	
-	/* // Debugg check czy dobrze zamapowano 
-	for (auto iter : graph.umap_nodes)
-		cout << iter.first << " = " << iter.second << endl;
-	cout << "\nREVERSED:\n";
-	for (auto iter : graph.umap_nodes_reversed)
-		cout << iter.first << " = " << iter.second << endl;
-	*/
-	
-	//
 }

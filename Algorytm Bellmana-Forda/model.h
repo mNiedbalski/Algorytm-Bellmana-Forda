@@ -53,5 +53,4 @@ struct Graph
 
 int Find(const Graph& graph, const int& index, bool& _found);
 void addEdge_Directed(Graph& graph, const int begin, const int end, const int cost);
-bool StaryBellmanFord(Graph& graph, const int index);
 bool Bellman_Ford(Graph& graph, const int index);

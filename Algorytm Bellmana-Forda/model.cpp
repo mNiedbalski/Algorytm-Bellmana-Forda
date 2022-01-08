@@ -42,7 +42,7 @@ void addEdge_Directed(Graph& graph, const int begin, const int end, const int co
 	}
 }
 
-bool Bellman_Ford(Graph& graph, const int index)
+bool Bellman_Ford(Graph& graph, const int index, const string& fileName)
 {
 	vector <int> distances;
 	vector <string> paths;
@@ -71,6 +71,7 @@ bool Bellman_Ford(Graph& graph, const int index)
 			}
 		}
 	}
+	Save(graph, fileName, index, distances, paths);
 	cout << "RESULTS:\n\n";
 	for (int i = 0; i < distances.size(); i++)
 	{
@@ -78,4 +79,15 @@ bool Bellman_Ford(Graph& graph, const int index)
 		cout << paths[i] << endl;
 	}
 	return true;
+}
+void Save(Graph& _graph, const string& _fileName, const int index, const vector <int>& _distances, const vector <string>& _paths)
+{
+	ofstream file;
+	file.open(_fileName, ios::app);
+	file << "Wierzcholek startowy: " << index << endl;
+	for (int i = 0; i < _graph.nodes.size(); i++) {
+		if (index!=_graph.umap_nodes_reversed.at(i))
+			file << _paths[i] << " : " << _distances[i] << endl;
+	}
+
 }

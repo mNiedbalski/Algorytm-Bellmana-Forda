@@ -68,3 +68,9 @@ void DisplayGraph(const Graph& graph)
 		}
 	}
 }
+void Setup_File(const string & fileName)
+{
+	ofstream file;
+	file.open(fileName);
+	file << "";
+}

@@ -53,4 +53,5 @@ struct Graph
 
 int Find(const Graph& graph, const int& index, bool& _found);
 void addEdge_Directed(Graph& graph, const int begin, const int end, const int cost);
-bool Bellman_Ford(Graph& graph, const int index);
+void Save(Graph& _graph, const string& _fileName, const int index, const vector <int>& _distances, const vector <string>& _paths);
+bool Bellman_Ford(Graph& graph, const int index, const string & fileName);

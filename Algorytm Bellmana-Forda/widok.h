@@ -25,6 +25,28 @@ using namespace std;
 * \param[in] parametry Wprowadzone parametry do programu wraz z ich odpowiadaj¹cymi prze³¹cznikami.
 */
 void Load_parameters(vector <string>& params, const int& Liczba_parametrów, char* parametry[]);
+/** \brief Funkcja ³aduj¹ca graf z pliku tekstowego.
+* 
+* Przebieg funkcji:
+* -#
+* 
+* \
+*/
 void Load_graph(const string& name, Graph& _graph);
+/** \brief Funkcja wczytuj¹ca wierzcho³ki, dla których program bêdzie szukaæ najkrótszych tras do innych.
+* \param[in] name Nazwa pliku tekstowego, z którego s¹ wczytywane zmienne.
+* \param[in,out] variables Wektor zmiennych zawieraj¹cy wierzcho³ki, dla których program bêdzie szukaæ najkrótszych tras do innych wierzcho³ków.
+*/
 void Load_variables(const string& name, vector <int>& variables);
+/** \brief Funkcja przygotowuj¹ca plik wyjœciowy do pracy.
+* 
+* Jej zadaniem jest wyczyszczenie aktualnej zawartoœci pliku. Potrzebne jest to, gdy¿ implementacja zapisywania danych do pliku dopisuje dane, a nie nadpisuje starych.
+* 
+* \param[in] fileName Nazwa pliku wyjœciowego.
+*/
+void Setup_File(const string& fileName);
+/** \brief Funkcja wyœwietlaj¹ca graf w konsoli (Funkcja debuggowa).
+* 
+* \param[in,out] graph Wyœwietlany graf.
+*/
 void DisplayGraph(const Graph& graph);

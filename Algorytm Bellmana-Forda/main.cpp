@@ -13,11 +13,18 @@ int main(int argc, char* argv[])
 	Load_variables(parameters.at(1),variables);
 	DisplayGraph(graph); //Debugg
 	Setup_File(parameters.at(2));
-	cout << "\n\n";
+	cout << "\n";
 	for (auto var : variables) {
-		if (!Bellman_Ford(graph, var, parameters[2]))
-			cout << "\nWystapil ujemny cykl dla wierzcholka: " << var; //Debugg
-		cout << endl; //Debugg
+		if (!CheckVar(var,graph)) {
+			PrintNotFound(parameters[2], var);
+		}
+		else {
+			if (!Bellman_Ford(graph, var, parameters[2])) {
+				PrintNegativeCycle(parameters[2]);
+				cerr << "W grafie wystapil cykl o ujemnej wadze, dlatego dalsza kontynuacja petli jest zbedna.\n";
+				return -1;
+			}
+		}
 	}
 	
 

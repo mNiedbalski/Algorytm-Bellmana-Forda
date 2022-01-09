@@ -14,6 +14,17 @@ void Load_parameters(vector <string>& params, const int& Liczba_parametrow, char
 			params[2] = parametry[i + 1];
 	}
 }
+bool FileCorrect(const string & _fileName)
+{
+	ifstream plik;
+	plik.open(_fileName);
+	if (plik.is_open())
+		return true;
+	else {
+		cout << "Program nie jest w stanie otworzyc pliku wejsciowego o nazwie: " << _fileName << ". Prosze sie upewnic, ze na pewno istnieje taki plik w folderze projektu." << endl;
+		return false;
+	}
+}
 void Load_graph(const string& name, Graph& _graph)
 {
 	int beginning, end;
@@ -73,4 +84,24 @@ void Setup_File(const string & fileName)
 	ofstream file;
 	file.open(fileName);
 	file << "";
+}
+void PrintNegativeCycle(const string& _fileName)
+{
+	ofstream file;
+	file.open(_fileName, ios::app);
+	file << "W grafie wystapil cykl o ujemnej wadze";
+}
+void PrintNotFound(const string& _fileName, const int& _var)
+{
+	ofstream file;
+	file.open(_fileName, ios::app);
+	file << "Wierzcholek startowy: " << _var << endl << "Brak wierzcholka " << _var << " w grafie!" << endl;
+}
+bool CheckVar(const int& _var, const Graph& graph)
+{
+	for (auto node : graph.nodes) {
+		if (_var == node.index)
+			return true;
+	}
+	return false;
 }

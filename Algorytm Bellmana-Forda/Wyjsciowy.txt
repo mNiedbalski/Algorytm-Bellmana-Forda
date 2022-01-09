@@ -3,8 +3,10 @@ Wierzcholek startowy: 3
 3->12 : 1
 3->12->2->5 : 37
 3->4 : 11
-Wierzcholek startowy: 2
-2->5->3 : 36
-2->5->3->12 : 37
-2->5 : 34
-2->5->3->4 : 47
+wierzcholek startowy: 6
+brak wierzcholka 6 w grafie
+Wierzcholek startowy: 12
+12->3 : 4
+12->2 : 2
+12->2->5 : 36
+12->3->4 : 15

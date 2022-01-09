@@ -52,7 +52,6 @@ bool Bellman_Ford(Graph& graph, const int index, const string& fileName)
 		distances[i] = INT_MAX;
 	distances[graph.umap_nodes.at(index)] = 0;
 	string temp = to_string(index);
-	cout << "paths: \n";
 	for (int i = 0; i < graph.nodes.size(); i++) {
 		paths[i] = temp;
 	}
@@ -72,12 +71,12 @@ bool Bellman_Ford(Graph& graph, const int index, const string& fileName)
 		}
 	}
 	Save(graph, fileName, index, distances, paths);
-	cout << "RESULTS:\n\n";
+	/*cout << "RESULTS:\n\n";
 	for (int i = 0; i < distances.size(); i++)
 	{
 		cout << index << " -> " << graph.umap_nodes_reversed.at(i) << " cost: " << distances[i] << endl;
 		cout << paths[i] << endl;
-	}
+	}*/
 	return true;
 }
 void Save(Graph& _graph, const string& _fileName, const int index, const vector <int>& _distances, const vector <string>& _paths)
@@ -91,3 +90,4 @@ void Save(Graph& _graph, const string& _fileName, const int index, const vector 
 	}
 
 }
+

@@ -67,4 +67,9 @@ void PrintNotFound(const string& _fileName, const int& _var);
 * \param[in] _var Indeks szukanego wierzcho³ka.
 */
 bool CheckVar(const int& _var, const Graph& graph);
+/** \brief Funkcja sprawdzaj¹ca czy podany plik wejœciowy jest dostêpny dla programu.
+* \param[in] _fileName nazwa sprawdzanego pliku.
+* \return true program jest w stanie otworzyæ plik tekstowy.
+* \return false program nie jest w stanie otworzyæ pliku tekstowego.
+*/
 bool FileCorrect(const string& _fileName);

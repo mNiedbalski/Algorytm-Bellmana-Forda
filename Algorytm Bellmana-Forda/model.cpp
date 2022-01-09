@@ -8,7 +8,7 @@ int Find(const Graph& graph, const int & index, bool & _found)
 			return graph.umap_nodes.at(index);
 		}
 }
-void addEdge_Directed(Graph& graph, const int begin, const int end, const int cost) //Skierowane
+void addEdge_Directed(Graph& graph, const int begin, const int end, const double cost) //Skierowane
 { 
 	bool found_beginning = false;
 	bool found_end = false;
@@ -20,7 +20,6 @@ void addEdge_Directed(Graph& graph, const int begin, const int end, const int co
 	Find(graph, newEdge.end, found_end);
 	if (found_beginning) {
 		graph.nodes[where].edges.push_back(newEdge);
-		graph.allEdges.push_back(newEdge);
 	}
 	else {
 		Node newNode;
@@ -28,7 +27,6 @@ void addEdge_Directed(Graph& graph, const int begin, const int end, const int co
 		graph.umap_nodes[begin] = graph.nodes.size();
 		graph.umap_nodes_reversed[graph.nodes.size()] = begin;
 		newNode.edges.push_back(newEdge);
-		graph.allEdges.push_back(newEdge);
 		graph.nodes.push_back(newNode);
 
 	}
@@ -44,7 +42,7 @@ void addEdge_Directed(Graph& graph, const int begin, const int end, const int co
 
 bool Bellman_Ford(Graph& graph, const int index, const string& fileName)
 {
-	vector <int> distances;
+	vector <double> distances;
 	vector <string> paths;
 	distances.resize(graph.nodes.size());
 	paths.resize(graph.nodes.size());
@@ -71,22 +69,21 @@ bool Bellman_Ford(Graph& graph, const int index, const string& fileName)
 		}
 	}
 	Save(graph, fileName, index, distances, paths);
-	/*cout << "RESULTS:\n\n";
-	for (int i = 0; i < distances.size(); i++)
-	{
-		cout << index << " -> " << graph.umap_nodes_reversed.at(i) << " cost: " << distances[i] << endl;
-		cout << paths[i] << endl;
-	}*/
 	return true;
 }
-void Save(Graph& _graph, const string& _fileName, const int index, const vector <int>& _distances, const vector <string>& _paths)
+void Save(Graph& _graph, const string& _fileName, const int index, const vector <double>& _distances, const vector <string>& _paths)
 {
 	ofstream file;
 	file.open(_fileName, ios::app);
 	file << "Wierzcholek startowy: " << index << endl;
 	for (int i = 0; i < _graph.nodes.size(); i++) {
-		if (index!=_graph.umap_nodes_reversed.at(i))
-			file << _paths[i] << " : " << _distances[i] << endl;
+		if (index != _graph.umap_nodes_reversed.at(i)) {
+			if (_distances[i] == INT_MAX)
+				file << index << "->" << _graph.umap_nodes_reversed.at(i) << " : BRAK TRASY" << endl;
+			else
+				file << _paths[i] << " : " << _distances[i] << endl;
+		}
+
 	}
 
 }

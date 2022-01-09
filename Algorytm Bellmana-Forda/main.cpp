@@ -13,7 +13,11 @@ int main(int argc, char* argv[])
 	Load_variables(parameters.at(1),variables);
 	DisplayGraph(graph); //Debugg
 	Setup_File(parameters.at(2));
-	cout << "\n";
+	cout << "\n"; //Debugg
+	for (auto fileName : parameters)
+		if (!FileCorrect(fileName)) {
+			return -1;
+		}
 	for (auto var : variables) {
 		if (!CheckVar(var,graph)) {
 			PrintNotFound(parameters[2], var);

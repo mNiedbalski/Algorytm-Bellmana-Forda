@@ -29,7 +29,7 @@ void Load_parameters(vector <string>& params, const int& Liczba_parametrów, char
 *   -# Gdy sequence % 5 == 0 to przekonwertuj temp na typ int i zapisz w zmiennej beginning.
 *   -# Gdy sequence % 5 == 1 to sprawdŸ czy krawêdŸ jest skierowana, czy dwukierunkowa i ustaw odpowiedni¹ wartoœæ zmiennej directed.
 *   -# Gdy sequence % 5 == 2 to przekonwertuj temp na typ int i zapisz w zmiennej end.
-*   -# Gdy sequence % 5 == 4 to przekonwertuj temp na typ double i zapisz w zmiennej cost. Nastêpnie zale¿nie od wartoœci zmiennej directed dokonaj dodania krawêdzi raz, lub podwójnie.
+*   -# Gdy sequence % 5 == 4 to przekonwertuj temp na typ double i zapisz w zmiennej cost. Nastêpnie zale¿nie od wartoœci zmiennej directed wykonaj funkcjê addEdge_Directed() raz, lub podwójnie.
 * -# Zinkrementuj sequence i wczytuj dalej krawêdzie.
 *	 
 * \params[in] name Nazwa pliku tekstowego zawieraj¹cego graf.
@@ -67,3 +67,4 @@ void PrintNotFound(const string& _fileName, const int& _var);
 * \param[in] _var Indeks szukanego wierzcho³ka.
 */
 bool CheckVar(const int& _var, const Graph& graph);
+bool FileCorrect(const string& _fileName);

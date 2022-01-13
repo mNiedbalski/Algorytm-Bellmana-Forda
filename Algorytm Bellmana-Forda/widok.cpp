@@ -1,7 +1,12 @@
 #include "widok.h"
-void Load_parameters(vector <string>& params, const int& Liczba_parametrow, char* parametry[])
+bool Load_parameters(vector <string>& params, const int& Liczba_parametrow, char* parametry[])
 {
 	vector <string> temp;
+	if (Liczba_parametrow != 7) 
+	{
+		cerr << "Podano bledna liczbe parametrow! Prosze podac 3 parametry wraz z ich przelacznikami.\n";
+		return false;
+	}
 	for (int i = 0; i < Liczba_parametrow; i++)
 		temp.push_back(string(parametry[i]));
 	for (int i = 0; i < temp.size(); i++)
@@ -13,6 +18,7 @@ void Load_parameters(vector <string>& params, const int& Liczba_parametrow, char
 		else if (temp[i] == "-o")
 			params[2] = parametry[i + 1];
 	}
+	return true;
 }
 bool FileCorrect(const string & _fileName)
 {

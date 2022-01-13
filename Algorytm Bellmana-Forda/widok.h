@@ -21,7 +21,7 @@ using namespace std;
 * \param[in] Liczba_parametrów Liczba parametrów wprowadzonych do programu.
 * \param[in] parametry Wprowadzone parametry do programu wraz z ich odpowiadaj¹cymi prze³¹cznikami.
 */
-void Load_parameters(vector <string>& params, const int& Liczba_parametrów, char* parametry[]);
+bool Load_parameters(vector <string>& params, const int& Liczba_parametrów, char* parametry[]);
 /** \brief Funkcja ³aduj¹ca graf z pliku tekstowego.
 * 
 * Przebieg funkcji:
@@ -34,6 +34,8 @@ void Load_parameters(vector <string>& params, const int& Liczba_parametrów, char
 *	 
 * \params[in] name Nazwa pliku tekstowego zawieraj¹cego graf.
 * \param[in,out] _graph Graf, który jest ³adowany z pliku tekstowego.
+* \return false jest niepoprawna liczba parametrow
+* \return true jest poprawna liczba parametrow
 */
 void Load_graph(const string& name, Graph& _graph);
 /** \brief Funkcja wczytuj¹ca wierzcho³ki, dla których program bêdzie szukaæ najkrótszych tras do innych.

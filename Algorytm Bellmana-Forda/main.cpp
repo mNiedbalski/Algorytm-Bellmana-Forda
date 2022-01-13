@@ -8,7 +8,8 @@ int main(int argc, char* argv[])
 	vector <string> parameters;
 	vector <int> variables;
 	parameters.resize(3);
-	Load_parameters(parameters, argc, argv);
+	if (!Load_parameters(parameters, argc, argv))
+		return -1;
 	Load_graph(parameters.at(0), graph);
 	Load_variables(parameters.at(1),variables);
 	DisplayGraph(graph); //Debugg

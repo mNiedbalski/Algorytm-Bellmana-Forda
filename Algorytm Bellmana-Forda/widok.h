@@ -1,7 +1,21 @@
+/**
+* \file
+*/
 #pragma once
 #include <iostream>
 #include "model.h"
 using namespace std;
+/** \brief Struktura zawieraj¹ca parametry przekazywane do programu
+* \param graphFile Plik z grafem
+* \param pathsFile Plik z wierzcho³kami, od których program bêdzie szuka³ najlepszych tras.
+* \param outputFile Plik z wynikami programu (trasy i koszty).
+*/
+struct Params
+{
+	string graphFile;
+	string pathsFile;
+	string outputFile;
+};
 /** \brief Funkcja, która obs³uguje podawane parametry do programu wraz z ich prze³¹cznikami.
 *
 * Przebieg funkcji:
@@ -21,7 +35,7 @@ using namespace std;
 * \param[in] Liczba_parametrów Liczba parametrów wprowadzonych do programu.
 * \param[in] parametry Wprowadzone parametry do programu wraz z ich odpowiadaj¹cymi prze³¹cznikami.
 */
-bool Load_parameters(vector <string>& params, const int& Liczba_parametrów, char* parametry[]);
+bool Load_parameters(Params& params, const int& Liczba_parametrów, char* parametry[]);
 /** \brief Funkcja ³aduj¹ca graf z pliku tekstowego.
 * 
 * Przebieg funkcji:

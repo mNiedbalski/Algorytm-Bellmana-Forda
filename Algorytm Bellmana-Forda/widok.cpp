@@ -1,5 +1,7 @@
 #include "widok.h"
-bool Load_parameters(vector <string>& params, const int& Liczba_parametrow, char* parametry[])
+using namespace std;
+
+bool Load_parameters(Params& params, const int& Liczba_parametrow, char* parametry[])
 {
 	vector <string> temp;
 	if (Liczba_parametrow != 7) 
@@ -12,11 +14,11 @@ bool Load_parameters(vector <string>& params, const int& Liczba_parametrow, char
 	for (int i = 0; i < temp.size(); i++)
 	{
 		if (temp[i] == "-g")
-			params[0] = parametry[i + 1];
+			params.graphFile = parametry[i + 1];
 		else if (temp[i] == "-w")
-			params[1] = parametry[i + 1];
+			params.pathsFile = parametry[i + 1];
 		else if (temp[i] == "-o")
-			params[2] = parametry[i + 1];
+			params.outputFile = parametry[i + 1];
 	}
 	return true;
 }

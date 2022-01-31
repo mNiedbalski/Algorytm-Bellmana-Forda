@@ -1,3 +1,6 @@
+/**
+* \file
+*/
 #pragma once
 #include <vector>
 #include <list>
@@ -50,15 +53,16 @@ struct Graph
 /** \brief Funkcja szukaj¹ca wierzcho³ka w grafie.
 * 
 * Funkcja iteruje przez wszystkie wierzcho³ki i sprawdza czy istnieje jakiœ o indeksach pocz¹tku i koñca krawêdzi.
-* Jeœli zostanie znaleziony, to funkcja siê koñczy i zwraca indeks wierzcho³ka w wektorze.
+* Jeœli zostanie znaleziony, to funkcja siê koñczy i przekazywany parametr _where zawiera informacje o tym, gdzie jest ten wierzcho³ek.
+* Parametr _where jest tylko istotny dla poszukiwania pocz¹tkowego wierzcho³ka, gdy¿ koñcowy jest tylko tworzony, jeœli go nie ma, aby istnia³ w grafie.
 * Jeœli nie zostanie znaleziony, zostaje przekazana o tym stosowna informacja i w kolejnych wykonywach instrukcjach programu brakuj¹cy wierzcho³ek zostaje dodany.
 * 
 * \param[in] graph Przeszukiwany graf.
 * \param[in] index Indeks szukanego wierzcho³ka.
-* \param[in,out] _found 
-* \return indeks znalezionego wierzcho³ka
+* \param[in,out] _found Zmienna przechowuj¹ca informacjê o tym, czy zosta³ znaleziony wierzcho³ek.
+* \param[in,out] _where Zmienna przechowuj¹ca indeks znalezionego wierzcho³ka.
 */
-int Find(const Graph& graph, const int& index, bool& _found);
+bool Find(const Graph& graph, const int& index, int & _where);
 /** \brief Funkcja dodaj¹ca skierowan¹ krawêdŸ do grafu.
 * 
 * Przebieg funkcji:
